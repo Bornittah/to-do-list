@@ -18,7 +18,7 @@ const todo = [
     index: 4,
     description: 'Take lunch',
     completed: false,
-  }
+  },
 ];
 
 const list = document.querySelector('.list');
