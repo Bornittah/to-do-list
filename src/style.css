@@ -19,7 +19,7 @@ body {
   width: 50%;
   height: 60%;
   margin: 5% auto;
-  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0 2px 8px 0;
 }
 
 .line {
