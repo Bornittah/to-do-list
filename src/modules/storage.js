@@ -4,14 +4,14 @@ export class Todo {
   }
 
   static clearInput = () => {
-    let inputField = document.querySelector('#activity'); 
+    const inputField = document.querySelector('#activity');
     inputField.value = '';
     return true;
   }
 
   static getTodo = () => {
     let todoList = [];
-    let data = localStorage.getItem('todo') 
+    const data = localStorage.getItem('todo');
     if (data === null) {
       localStorage.setItem('todo', JSON.stringify(todoList));
     }
@@ -21,15 +21,15 @@ export class Todo {
 
   static getIndex = () => {
     const todoList = Todo.getTodo();
-   let index=0;
-    if(todoList === null){
-      return index+1;
+    const index = 0;
+    if(todoList === null) {
+      return index + 1;
     }
-    return index = todoList.length+1;
+    return index = todoList.length + 1;
   }
 
-    addTodo = () => {
-    let data = Todo.getTodo();
+  addTodo = () => {
+    const data = Todo.getTodo();
     const index= Todo.getIndex();
 
     const todo = {
@@ -37,10 +37,10 @@ export class Todo {
       description: this.description,
       completed: false,
     };
-  
+
     if (data === null) {
       data.push(todo);
-      localStorage.setItem('todo', JSON.stringify(todoList))
+      localStorage.setItem('todo', JSON.stringify(data));
     }
     let newtodoList = JSON.parse(localStorage.getItem('todo'));
     newtodoList = [...data, todo];
@@ -50,9 +50,9 @@ export class Todo {
   }
 
   static display() {
-    const todoList =  Todo.getTodo();
+    const todoList = Todo.getTodo();
     const list = document.querySelector('.list');
-    let str='';
+    let str = '';
     todoList.forEach((todo) => {
     str += `<li class="list-item">
             <div class="form-group">

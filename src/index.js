@@ -1,16 +1,17 @@
-import {Todo} from './modules/storage.js';
+import { Todo } from './modules/storage.js';
+
 const form = document.querySelector('.form');
-let inputField = document.querySelector('#activity'); 
+const inputField = document.querySelector('#activity');
 
 Todo.display();
 form.addEventListener('submit', (e) => {
   e.preventDefault();
-  let description = inputField.value;
-  let todo = new Todo(description);
+  const description = inputField.value;
+  const todo = new Todo(description);
   todo.addTodo();
 });
 
-document.querySelectorAll('.list').forEach((link, id) => {
+document.querySelectorAll('.list').forEach((link) => {
   link.addEventListener('click', (e) => {
     e.preventDefault();
 
@@ -22,11 +23,3 @@ document.querySelectorAll('.list').forEach((link, id) => {
     });
   });
 });
-
-
-
-
-
-
-
-
