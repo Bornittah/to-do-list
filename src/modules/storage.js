@@ -21,19 +21,19 @@ export class Todo {
 
   static getIndex = () => {
     const todoList = Todo.getTodo();
-    const index = 0;
-    if(todoList === null) {
+    let index = 0;
+    if (todoList === null) {
       return index + 1;
     }
-    return index = todoList.length + 1;
+    index = todoList.length + 1;
+    return index;
   }
 
   addTodo = () => {
     const data = Todo.getTodo();
-    const index= Todo.getIndex();
-
+    const index = Todo.getIndex();
     const todo = {
-      index: index,
+      index,
       description: this.description,
       completed: false,
     };
@@ -54,7 +54,7 @@ export class Todo {
     const list = document.querySelector('.list');
     let str = '';
     todoList.forEach((todo) => {
-    str += `<li class="list-item">
+      str += `<li class="list-item">
             <div class="form-group">
             <input type="checkbox" id="${todo.index}">
             <label for="${todo.index}">${todo.description}</label>
