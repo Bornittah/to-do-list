@@ -28,11 +28,11 @@ export class Todo {
     index = todoList.length + 1;
     return index;
   }
-    
+   
   static updateIndex = () => {
     const todoList = Todo.getTodo();
     todoList.forEach((item) => {
-      let indx = todoList.findIndex((obj => obj === item));
+      const indx = todoList.findIndex((obj => obj === item));
       item.index = indx + 1;
     });
     localStorage.setItem('todo', JSON.stringify(todoList));
@@ -88,8 +88,8 @@ export class Todo {
   static updateTodo = (index, value) => {
     const todoList = Todo.getTodo();
     todoList.forEach((item) => {
-      let indx = todoList.findIndex((obj => obj === item));
-      if(index == indx) {
+      const indx = todoList.findIndex((obj) => obj === item);
+      if (index === indx) {
         item.description = value;
       }
       localStorage.setItem('todo', JSON.stringify(todoList));
@@ -99,8 +99,8 @@ export class Todo {
   static completed = (index, value) => {
     const todoList = Todo.getTodo();
     todoList.forEach((item) => {
-      let indx = todoList.findIndex((obj => obj === item));
-      if(index == indx) {
+      const indx = todoList.findIndex((obj) => obj === item);
+      if(index === indx) {
         item.completed = value;
       }
       localStorage.setItem('todo', JSON.stringify(todoList));
@@ -109,9 +109,9 @@ export class Todo {
 
   static clearCompleted = () => {
     const todoList = Todo.getTodo();
-    let newtodoList = [];
+    const newtodoList = [];
     todoList.forEach((item) => {
-      if(item.completed === false) {
+      if (item.completed === false) {
         newtodoList.push(item);
       }
       localStorage.setItem('todo', JSON.stringify(newtodoList));
@@ -122,7 +122,7 @@ export class Todo {
   static checkedTask = () => {
     const todoList = Todo.getTodo();
     todoList.forEach((item) => {
-      if(item.completed === true) {
+      if (item.completed === true) {
         Todo.display();
         document.querySelector('.checkbox').checked = true;
       }
@@ -135,5 +135,4 @@ export class Todo {
     localStorage.setItem('todo', JSON.stringify(todoList));
     Todo.display();
   }
-
 }

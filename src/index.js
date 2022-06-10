@@ -15,13 +15,13 @@ form.addEventListener('submit', (e) => {
 
 document.querySelectorAll('.checkbox').forEach((link, id) => {
   link.addEventListener('change', (e) => {
-    let completed = true;
-    let uncomplted  = false;
+    const completed = true;
+    const uncomplted = false;
     e.preventDefault();
-    if(e.target.checked){
+    if (e.target.checked){
       Todo.completed(id, completed);
-    }
-    else{
+      }
+    else {
       Todo.completed(id, uncomplted);
     }
   });
@@ -30,7 +30,6 @@ document.querySelectorAll('.checkbox').forEach((link, id) => {
 document.querySelectorAll('#textarea').forEach((link, id) => {
   link.addEventListener('keyup', (e) => {
     e.preventDefault();
-    console.log(e.target.value)
     Todo.updateTodo(id, e.target.value);
   });
 });
