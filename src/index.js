@@ -20,8 +20,7 @@ document.querySelectorAll('.checkbox').forEach((link, id) => {
     e.preventDefault();
     if (e.target.checked) {
       Todo.completed(id, completed);
-      }
-    else {
+    } else {
       Todo.completed(id, uncomplted);
     }
   });
