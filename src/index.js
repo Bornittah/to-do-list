@@ -18,9 +18,9 @@ document.querySelectorAll('.checkbox').forEach((link, id) => {
     const completed = true;
     const uncomplted = false;
     e.preventDefault();
-    if (e.target.checked){
+    if (e.target.checked) {
       Todo.completed(id, completed);
-      }
+    }
     else {
       Todo.completed(id, uncomplted);
     }

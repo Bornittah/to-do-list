@@ -28,11 +28,11 @@ export class Todo {
     index = todoList.length + 1;
     return index;
   }
-   
+  
   static updateIndex = () => {
     const todoList = Todo.getTodo();
     todoList.forEach((item) => {
-      const indx = todoList.findIndex((obj => obj === item));
+      const indx = todoList.findIndex((obj) => obj === item);
       item.index = indx + 1;
     });
     localStorage.setItem('todo', JSON.stringify(todoList));
@@ -100,7 +100,7 @@ export class Todo {
     const todoList = Todo.getTodo();
     todoList.forEach((item) => {
       const indx = todoList.findIndex((obj) => obj === item);
-      if(index === indx) {
+      if (index === indx) {
         item.completed = value;
       }
       localStorage.setItem('todo', JSON.stringify(todoList));
