@@ -76,12 +76,31 @@ form input::placeholder {
   border-bottom: 0.2px solid #e8e8e9;
 }
 
+.form-group {
+  flex: 2;
+  width: 100%;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .form-group input {
   margin-right: 5px;
 }
 
+.form-group textarea {
+  padding: 5px;
+  width: 90%;
+  display: inline-block;
+  border: none;
+}
+
 .action-icons i {
   margin: 0 12px;
+}
+
+#editInput {
+  display: none;
 }
 
 .footer {

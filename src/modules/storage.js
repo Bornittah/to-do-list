@@ -28,6 +28,15 @@ export class Todo {
     index = todoList.length + 1;
     return index;
   }
+    
+  static updateIndex = () => {
+    const todoList = Todo.getTodo();
+    todoList.forEach((item) => {
+      let indx = todoList.findIndex((obj => obj === item));
+      item.index = indx + 1;
+    });
+    localStorage.setItem('todo', JSON.stringify(todoList));
+  }
 
   addTodo = () => {
     const data = Todo.getTodo();
@@ -47,6 +56,7 @@ export class Todo {
     localStorage.setItem('todo', JSON.stringify(newtodoList));
     Todo.clearInput();
     Todo.display();
+    Todo.updateIndex();
   }
 
   static display() {
@@ -56,12 +66,10 @@ export class Todo {
     todoList.forEach((todo) => {
       str += `<li class="list-item">
             <div class="form-group">
-            <input type="checkbox" id="${todo.index}">
-            <label for="${todo.index}">${todo.description}</label>
+            <input type="checkbox"  id="${todo.index}" class="checkbox">
+            <textarea id="textarea">${todo.description}</textarea>
           </div>
           <div class="action-icons">
-              <i class="fa-solid fa-ellipsis-vertical show-more"></i>
-              <i class="fa fa-pen edit"></i>
               <i class="fa fa-trash-can delete"></i>
           </div>
           </li>`;
@@ -74,5 +82,58 @@ export class Todo {
     todoList.splice(index, 1);
     localStorage.setItem('todo', JSON.stringify(todoList));
     Todo.display();
+    Todo.updateIndex();
   }
+
+  static updateTodo = (index, value) => {
+    const todoList = Todo.getTodo();
+    todoList.forEach((item) => {
+      let indx = todoList.findIndex((obj => obj === item));
+      if(index == indx) {
+        item.description = value;
+      }
+      localStorage.setItem('todo', JSON.stringify(todoList));
+    });
+  }
+
+  static completed = (index, value) => {
+    const todoList = Todo.getTodo();
+    todoList.forEach((item) => {
+      let indx = todoList.findIndex((obj => obj === item));
+      if(index == indx) {
+        item.completed = value;
+      }
+      localStorage.setItem('todo', JSON.stringify(todoList));
+    });
+  }
+
+  static clearCompleted = () => {
+    const todoList = Todo.getTodo();
+    let newtodoList = [];
+    todoList.forEach((item) => {
+      if(item.completed === false) {
+        newtodoList.push(item);
+      }
+      localStorage.setItem('todo', JSON.stringify(newtodoList));
+      Todo.display();
+    });
+  }
+
+  static checkedTask = () => {
+    const todoList = Todo.getTodo();
+    todoList.forEach((item) => {
+      if(item.completed === true) {
+        Todo.display();
+        document.querySelector('.checkbox').checked = true;
+      }
+    });
+  }
+
+  static reset = () => {
+    const todoList = Todo.getTodo();
+    todoList.splice(0, todoList.length);
+    localStorage.setItem('todo', JSON.stringify(todoList));
+    Todo.display();
+  }
+
 }
