@@ -28,7 +28,7 @@ export class Todo {
     index = todoList.length + 1;
     return index;
   }
-  
+
   static updateIndex = () => {
     const todoList = Todo.getTodo();
     todoList.forEach((item) => {
