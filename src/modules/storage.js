@@ -85,6 +85,7 @@ export class Todo {
     localStorage.setItem('todo', JSON.stringify(todoList));
     Todo.display();
     Todo.updateIndex();
+    window.location.reload();
   }
 
   static updateTodo = (index, value) => {
@@ -114,17 +115,19 @@ export class Todo {
 
   static clearCompleted = () => {
     const todoList = Todo.getTodo();
-    const uncompleted = todoList.filter((todo => todo.completed === false));
+    const uncompleted = todoList.filter((todo) => todo.completed === false);
     localStorage.setItem('todo', JSON.stringify(uncompleted));
     Todo.display();
+    window.location.reload();
   }
 
   static checkedTask = () => {
     const todoList = Todo.getTodo();
     todoList.forEach((item) => {
       if (item.completed === true) {
-        document.querySelector('.checkbox').checked = true;
+        document.querySelectorAll('.checkbox').checked = true;
         document.querySelector('#textarea').value.strike();
+        console.log(item)
       }
     });
   }

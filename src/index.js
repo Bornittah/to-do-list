@@ -21,6 +21,7 @@ document.querySelectorAll('.checkbox').forEach((link, id) => {
     const uncomplted = false;
     e.preventDefault();
     if (e.target.checked) {
+      document.querySelector('#textarea').value.strike();
       Todo.completed(id, completed);
     } else {
       Todo.completed(id, uncomplted);
