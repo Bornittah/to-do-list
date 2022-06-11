@@ -1,4 +1,4 @@
-import addEventListenersToListItems from './eventListener.js'
+import addEventListenersToListItems from './eventListener.js';
 export class Todo {
   constructor(description) {
     this.description = description;
@@ -85,6 +85,7 @@ export class Todo {
     const todoList = Todo.getTodo();
     todoList.splice(index, 1);
     localStorage.setItem('todo', JSON.stringify(todoList));
+    addEventListenersToListItems();
     Todo.display();
     Todo.updateIndex();
   }
@@ -103,7 +104,7 @@ export class Todo {
 
   static completed = (index, value) => {
     const todoList = Todo.getTodo();
-    todoList[index-1]['completed'] = value;
+    todoList[index - 1].completed = value;
     localStorage.setItem('todo', JSON.stringify(todoList));
     Todo.updateIndex();
   }
@@ -118,10 +119,10 @@ export class Todo {
   static checkedTask = () => {
     const todoList = Todo.getTodo();
     todoList.forEach((item) => {
-        if (item.completed === true) {
-          document.querySelector(`#\\3${item.index}`).checked = true;
-          document.querySelector(`#\\3${item.index}`).nextElementSibling.classList.toggle('line-through');
-        }
+      if (item.completed === true) {
+        document.querySelector(`#\\3${item.index}`).checked = true;
+        document.querySelector(`#\\3${item.index}`).nextElementSibling.classList.toggle('line-through');
+      }
     });
   }
 

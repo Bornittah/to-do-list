@@ -27,8 +27,6 @@ document.querySelector('#submit').addEventListener('click', (e) => {
   todo.addTodo();
 });
 
-
-
 document.querySelectorAll('.clear').forEach((link) => {
   link.addEventListener('click', (e) => {
     e.preventDefault();
