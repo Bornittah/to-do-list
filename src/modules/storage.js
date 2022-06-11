@@ -114,9 +114,7 @@ export class Todo {
 
   static clearCompleted = () => {
     const todoList = Todo.getTodo();
-    const uncompleted = todoList.filter((todo) => {
-      return todo.completed === false;
-    });
+    const uncompleted = todoList.filter((todo) => { return todo.completed === false; });
     localStorage.setItem('todo', JSON.stringify(uncompleted));
     Todo.display();
   }
