@@ -1,6 +1,6 @@
-import { Todo } from './modules/storage.js';
+import { Todo } from './storage.js';
 
-export default function addEventListenersToListItems() {
+export function addEventListenersToListItems() {
   document.querySelectorAll('.checkbox').forEach((link) => {
     link.addEventListener('click', (e) => {
       link.nextElementSibling.classList.toggle('line-through');

@@ -1,4 +1,4 @@
-import addEventListenersToListItems from './modules/eventListener.js';
+import { addEventListenersToListItems } from './eventListener.js';
 
 export class Todo {
   constructor(description) {
