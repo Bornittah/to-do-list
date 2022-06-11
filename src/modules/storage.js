@@ -75,7 +75,7 @@ export class Todo {
           </li>`;
     });
     list.innerHTML = str;
-    addEventListenersToListItems();
+    Todo.addEventListenersToListItems();
     Todo.updateIndex();
     Todo.checkedTask();
   }
@@ -84,7 +84,7 @@ export class Todo {
     const todoList = Todo.getTodo();
     todoList.splice(index, 1);
     localStorage.setItem('todo', JSON.stringify(todoList));
-    addEventListenersToListItems();
+    Todo.addEventListenersToListItems();
     Todo.display();
     Todo.updateIndex();
   }
@@ -128,25 +128,25 @@ export class Todo {
   static reset = () => {
     window.location.reload();
   }
-}
 
-export const addEventListenersToListItems = () => {
-  document.querySelectorAll('.checkbox').forEach((link) => {
-    link.addEventListener('click', (e) => {
-      link.nextElementSibling.classList.toggle('line-through');
-      Todo.completed(link.id, e.target.checked);
+  static addEventListenersToListItems = () => {
+    document.querySelectorAll('.checkbox').forEach((link) => {
+      link.addEventListener('click', (e) => {
+        link.nextElementSibling.classList.toggle('line-through');
+        Todo.completed(link.id, e.target.checked);
+      });
     });
-  });
-  document.querySelectorAll('.textarea').forEach((link, index) => {
-    link.addEventListener('keyup', (e) => {
-      e.preventDefault();
-      Todo.updateTodo(index, e.target.value);
+    document.querySelectorAll('.textarea').forEach((link, index) => {
+      link.addEventListener('keyup', (e) => {
+        e.preventDefault();
+        Todo.updateTodo(index, e.target.value);
+      });
     });
-  });
-  document.querySelectorAll('.delete').forEach((link, index) => {
-    link.addEventListener('click', (e) => {
-      e.preventDefault();
-      Todo.removeTodo(index);
+    document.querySelectorAll('.delete').forEach((link, index) => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        Todo.removeTodo(index);
+      });
     });
-  });
-};
+  };
+}
