@@ -3,7 +3,6 @@ export class Todo {
     this.description = description;
   }
 
-
   static clearInput = () => {
     const inputField = document.querySelector('#activity');
     inputField.value = '';
@@ -82,7 +81,6 @@ export class Todo {
 
   static removeTodo = (index) => {
     const todoList = Todo.getTodo();
-    console.log(index)
     todoList.splice(index, 1);
     localStorage.setItem('todo', JSON.stringify(todoList));
     Todo.display();
@@ -116,8 +114,8 @@ export class Todo {
 
   static clearCompleted = () => {
     const todoList = Todo.getTodo();
-    const uncompleted = todoList.filter((todo) =>{
-      return todo.completed == false;
+    const uncompleted = todoList.filter((todo) => {
+      return todo.completed === false;
     });
     localStorage.setItem('todo', JSON.stringify(uncompleted));
     Todo.display();
@@ -129,7 +127,6 @@ export class Todo {
       if (item.completed === true) {
         document.querySelector('.checkbox').checked = true;
         document.querySelector('#textarea').value.strike();
-        console.log(item)
       }
     });
   }
