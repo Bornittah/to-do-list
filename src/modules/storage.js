@@ -1,3 +1,4 @@
+import addEventListenersToListItems from './eventListener.js'
 export class Todo {
   constructor(description) {
     this.description = description;
@@ -75,6 +76,7 @@ export class Todo {
           </li>`;
     });
     list.innerHTML = str;
+    addEventListenersToListItems();
     Todo.updateIndex();
     Todo.checkedTask();
   }
@@ -85,7 +87,6 @@ export class Todo {
     localStorage.setItem('todo', JSON.stringify(todoList));
     Todo.display();
     Todo.updateIndex();
-    window.location.reload();
   }
 
   static updateTodo = (index, value) => {
@@ -102,15 +103,9 @@ export class Todo {
 
   static completed = (index, value) => {
     const todoList = Todo.getTodo();
-    todoList.forEach((item) => {
-      const indx = todoList.findIndex((obj) => obj === item);
-      if (index === indx) {
-        item.completed = value;
-      }
-      localStorage.setItem('todo', JSON.stringify(todoList));
-    });
+    todoList[index-1]['completed'] = value;
+    localStorage.setItem('todo', JSON.stringify(todoList));
     Todo.updateIndex();
-    Todo.display();
   }
 
   static clearCompleted = () => {
@@ -118,19 +113,15 @@ export class Todo {
     const uncompleted = todoList.filter((todo) => todo.completed === false);
     localStorage.setItem('todo', JSON.stringify(uncompleted));
     Todo.display();
-    window.location.reload();
   }
 
   static checkedTask = () => {
     const todoList = Todo.getTodo();
     todoList.forEach((item) => {
         if (item.completed === true) {
-          // console.log(todo)
-          document.querySelector('.checkbox').setAttribute('checked', true);
-          // item.nextElementSibling.classList.toggle('line-through');
+          document.querySelector(`#\\3${item.index}`).checked = true;
+          document.querySelector(`#\\3${item.index}`).nextElementSibling.classList.toggle('line-through');
         }
-        // document.querySelectorAll('.textarea').classList.toggle('line-through');
-      
     });
   }
 
