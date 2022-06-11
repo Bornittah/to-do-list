@@ -17,7 +17,11 @@
     "import/extensions": [ 1, {
       "js": "always", "json": "always"
     }],
-    "import/prefer-default-export": "off"
+    "import/prefer-default-export": "off",
+    "import/no-cycle": [2, { 
+      "ignoreExternal": true,
+      "maxDepth": 1
+    }]
   },
   "ignorePatterns": [
     "dist/",
