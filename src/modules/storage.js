@@ -127,7 +127,6 @@ export class Todo {
       if (item.completed === true) {
         document.querySelectorAll('.checkbox').checked = true;
         document.querySelector('#textarea').value.strike();
-        console.log(item)
       }
     });
   }
