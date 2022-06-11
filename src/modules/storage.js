@@ -66,8 +66,8 @@ export class Todo {
     todoList.forEach((todo) => {
       str += `<li class="list-item">
             <div class="form-group">
-            <input type="checkbox"  id="${todo.index}" value="${todo.completed}" class="checkbox">
-            <textarea id="textarea">${todo.description}</textarea>
+            <input type="checkbox" id="${todo.index}" value="${todo.description}" class="checkbox">
+            <textarea class="textarea">${todo.description}</textarea>
           </div>
           <div class="action-icons">
               <i class="fa fa-trash-can delete" id="delete"></i>
@@ -124,10 +124,13 @@ export class Todo {
   static checkedTask = () => {
     const todoList = Todo.getTodo();
     todoList.forEach((item) => {
-      if (item.completed === true) {
-        document.querySelectorAll('.checkbox').checked = true;
-        document.querySelector('#textarea').value.strike();
-      }
+        if (item.completed === true) {
+          // console.log(todo)
+          document.querySelector('.checkbox').setAttribute('checked', true);
+          // item.nextElementSibling.classList.toggle('line-through');
+        }
+        // document.querySelectorAll('.textarea').classList.toggle('line-through');
+      
     });
   }
 

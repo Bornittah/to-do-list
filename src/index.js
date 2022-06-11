@@ -4,6 +4,8 @@ import './modules/fontawesome/css/all.css';
 
 const form = document.querySelector('.form');
 const inputField = document.querySelector('#activity');
+const submitBtn = document.querySelector('#submit');
+const checkbox = document.querySelectorAll('.checkbox');
 
 Todo.display();
 Todo.checkedTask();
@@ -15,16 +17,25 @@ form.addEventListener('submit', (e) => {
   todo.addTodo();
 });
 
+inputField.addEventListener('focus', (e) => {
+  e.preventDefault();
+  submitBtn.style.display = 'block';
+});
+
+document.querySelector('#submit').addEventListener('click', (e) => {
+  e.preventDefault();
+  const description = inputField.value;
+  const todo = new Todo(description);
+  todo.addTodo();
+});
+
 document.querySelectorAll('.checkbox').forEach((link, id) => {
-  link.addEventListener('change', (e) => {
-    const completed = true;
-    const uncomplted = false;
+  link.addEventListener('click', (e) => {
     e.preventDefault();
-    if (e.target.checked) {
-      document.querySelector('#textarea').value.strike();
-      Todo.completed(id, completed);
+    if (e.target.checked === true) {
+      Todo.completed(id, true);
     } else {
-      Todo.completed(id, uncomplted);
+    Todo.completed(id, false);
     }
   });
 });
