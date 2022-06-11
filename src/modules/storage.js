@@ -3,6 +3,7 @@ export class Todo {
     this.description = description;
   }
 
+
   static clearInput = () => {
     const inputField = document.querySelector('#activity');
     inputField.value = '';
@@ -66,19 +67,22 @@ export class Todo {
     todoList.forEach((todo) => {
       str += `<li class="list-item">
             <div class="form-group">
-            <input type="checkbox"  id="${todo.index}" class="checkbox">
+            <input type="checkbox"  id="${todo.index}" value="${todo.completed}" class="checkbox">
             <textarea id="textarea">${todo.description}</textarea>
           </div>
           <div class="action-icons">
-              <i class="fa fa-trash-can delete"></i>
+              <i class="fa fa-trash-can delete" id="delete"></i>
           </div>
           </li>`;
     });
     list.innerHTML = str;
+    Todo.updateIndex();
+    Todo.checkedTask();
   }
 
   static removeTodo = (index) => {
-    const todoList = Todo.getTodo(index);
+    const todoList = Todo.getTodo();
+    console.log(index)
     todoList.splice(index, 1);
     localStorage.setItem('todo', JSON.stringify(todoList));
     Todo.display();
@@ -94,6 +98,7 @@ export class Todo {
       }
       localStorage.setItem('todo', JSON.stringify(todoList));
     });
+    Todo.updateIndex();
   }
 
   static completed = (index, value) => {
@@ -105,34 +110,31 @@ export class Todo {
       }
       localStorage.setItem('todo', JSON.stringify(todoList));
     });
+    Todo.updateIndex();
+    Todo.display();
   }
 
   static clearCompleted = () => {
     const todoList = Todo.getTodo();
-    const newtodoList = [];
-    todoList.forEach((item) => {
-      if (item.completed === false) {
-        newtodoList.push(item);
-      }
-      localStorage.setItem('todo', JSON.stringify(newtodoList));
-      Todo.display();
+    const uncompleted = todoList.filter((todo) =>{
+      return todo.completed == false;
     });
+    localStorage.setItem('todo', JSON.stringify(uncompleted));
+    Todo.display();
   }
 
   static checkedTask = () => {
     const todoList = Todo.getTodo();
     todoList.forEach((item) => {
       if (item.completed === true) {
-        Todo.display();
         document.querySelector('.checkbox').checked = true;
+        document.querySelector('#textarea').value.strike();
+        console.log(item)
       }
     });
   }
 
   static reset = () => {
-    const todoList = Todo.getTodo();
-    todoList.splice(0, todoList.length);
-    localStorage.setItem('todo', JSON.stringify(todoList));
-    Todo.display();
+    window.location.reload();
   }
 }

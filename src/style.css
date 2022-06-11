@@ -70,7 +70,7 @@ form input::placeholder {
 }
 
 .list-item {
-  padding: 15px 24px;
+  padding: 4px 24px;
   display: flex;
   justify-content: space-between;
   border-bottom: 0.2px solid #e8e8e9;
@@ -93,6 +93,8 @@ form input::placeholder {
   width: 90%;
   display: inline-block;
   border: none;
+  resize: none;
+  outline-width: 0.2px;
 }
 
 .action-icons i {

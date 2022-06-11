@@ -1,4 +1,6 @@
 import { Todo } from './modules/storage.js';
+import './style.css';
+import './modules/fontawesome/css/all.css';
 
 const form = document.querySelector('.form');
 const inputField = document.querySelector('#activity');
@@ -47,9 +49,7 @@ document.querySelectorAll('.clear').forEach((link) => {
   });
 });
 
-document.querySelectorAll('.reset').forEach((link) => {
-  link.addEventListener('click', (e) => {
-    e.preventDefault();
-    Todo.reset();
-  });
+document.querySelector('.reset').addEventListener('click', (e) => {
+  e.preventDefault();
+  Todo.reset();
 });
