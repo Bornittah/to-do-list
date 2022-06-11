@@ -1,4 +1,5 @@
 import addEventListenersToListItems from './eventListener.js';
+
 export class Todo {
   constructor(description) {
     this.description = description;
