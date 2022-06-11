@@ -1,4 +1,4 @@
-import { Todo } from './storage.js';
+import { Todo } from '.modules/storage.js';
 
 export default function addEventListenersToListItems() {
   document.querySelectorAll('.checkbox').forEach((link) => {
