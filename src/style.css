@@ -101,10 +101,6 @@ form input::placeholder {
   margin: 0 12px;
 }
 
-#editInput {
-  display: none;
-}
-
 .footer {
   padding: 12px;
   background: #f3f3f3;
