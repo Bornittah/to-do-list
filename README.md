@@ -1,5 +1,8 @@
 # to-do-list
  "To-do-list" is a tool that helps to organize your day. It simply lists the things that you need to do and allows you to mark them as complete.
+ 
+ # Delopyment
+ Click [here](https://bornittah.github.io/to-do-list/) to check out the online version
 
  # Built With
 - Languages - HTML, CSS and Javascript
